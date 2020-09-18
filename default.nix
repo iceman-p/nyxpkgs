@@ -1,7 +1,7 @@
-{ system ? builtins.currentSystem }:
-let
-  pkgs = import <nixpkgs> { inherit system; };
-in rec {
+{ system ? builtins.currentSystem,
+  pkgs ? import <nixpkgs> { inherit system; } }:
+
+rec {
   derpibooru-downloader = pkgs.callPackage ./pkgs/derpibooru-downloader {
     inherit pkgs;
   };
