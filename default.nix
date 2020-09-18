@@ -5,4 +5,8 @@ in rec {
   derpibooru-downloader = pkgs.callPackage ./pkgs/derpibooru-downloader {
     inherit pkgs;
   };
+
+  basc-archiver = pkgs.callPackage ./pkgs/basc-archiver {
+    inherit pkgs;
+  };
 }
