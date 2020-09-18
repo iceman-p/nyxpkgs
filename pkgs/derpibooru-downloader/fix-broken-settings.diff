@@ -1,0 +1,36 @@
+diff --git a/DerpibooruDownloaderCmd/main.cpp b/DerpibooruDownloaderCmd/main.cpp
+index c9a8128..4fe810f 100644
+--- a/DerpibooruDownloaderCmd/main.cpp
++++ b/DerpibooruDownloaderCmd/main.cpp
+@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
+     parser.process(a);
+ 
+     // Load program settings
+-    QSettings settings(QCoreApplication::applicationDirPath() + "/DerpibooruDownloader.ini", QSettings::IniFormat);
++    QSettings settings("Sibusten", "DerpibooruArchiver");
+ 
+     // If there are no settings stored in the .ini file
+     if (!settings.contains("windowGeometry")) { // TODO generate settings in the cmd version as well. Also change this check because window geometry is only relevant to the gui version
+diff --git a/DerpibooruDownloaderGui/mainwindow.cpp b/DerpibooruDownloaderGui/mainwindow.cpp
+index 466de91..d9e371d 100644
+--- a/DerpibooruDownloaderGui/mainwindow.cpp
++++ b/DerpibooruDownloaderGui/mainwindow.cpp
+@@ -504,7 +504,7 @@ void MainWindow::reportError(QString errorMessage) {
+ }
+ 
+ void MainWindow::saveSettings() {
+-    QSettings settings("DerpibooruDownloader.ini", QSettings::IniFormat);
++    QSettings settings("Sibusten", "DerpibooruArchiver");
+     settings.setValue("currentOptions", QString(QJsonDocument(exportPreset()).toJson(QJsonDocument::Compact)));
+     settings.setValue("showAdditionalInfo", ui->showAdditionalInfo->isChecked());
+     settings.setValue("suppressWarnings", ui->suppressWarnings->isChecked());
+@@ -520,8 +520,7 @@ void MainWindow::saveSettings() {
+ }
+ 
+ void MainWindow::loadSettings() {
+-    // Local .ini settings file
+-    QSettings settings("DerpibooruDownloader.ini", QSettings::IniFormat);
++    QSettings settings("Sibusten", "DerpibooruArchiver");
+ 
+     // If there are settings stored in the .ini file
+     if (settings.contains("windowGeometry")) {
