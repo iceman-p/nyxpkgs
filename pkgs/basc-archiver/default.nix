@@ -1,7 +1,7 @@
-{ stdenv, pkgs, lib, pythonPackages }:
+{ stdenv, pkgs, lib, python3Packages }:
 
 let
-  inherit (pythonPackages) python buildPythonApplication buildPythonPackage;
+  inherit (python3Packages) python buildPythonApplication buildPythonPackage;
   basc-py4chan = buildPythonPackage rec {
       pname = "basc-py4chan";
       version = "0.6.5";
@@ -13,7 +13,7 @@ let
       doCheck = false;
 
       propagatedBuildInputs = [
-        pythonPackages.requests
+        python3Packages.requests
       ];
       meta = {
         homepage = "http://github.com/bibanon/BASC-py4chan";
@@ -34,8 +34,8 @@ buildPythonApplication rec {
   doCheck = false;
   propagatedBuildInputs = [
     basc-py4chan
-    pythonPackages.docopt
-    pythonPackages.requests
+    python3Packages.docopt
+    python3Packages.requests
   ];
 
   meta = {
