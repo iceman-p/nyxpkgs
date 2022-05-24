@@ -7,7 +7,7 @@ let
     icon = "Derpibooru_Downloader_128";
     comment = "Downloads images from any Philomena booru using a variety of options";
     desktopName = "Derpibooru Downloader";
-    categories = "Network";
+    categories = [ "Network" ];
   };
 in
 stdenv.mkDerivation rec {
